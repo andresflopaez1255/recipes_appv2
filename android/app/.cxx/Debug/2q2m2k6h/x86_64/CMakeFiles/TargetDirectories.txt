@@ -1,0 +1,2 @@
+/Users/andresflorez/Desktop/recipes_appv2/android/app/.cxx/Debug/2q2m2k6h/x86_64/CMakeFiles/edit_cache.dir
+/Users/andresflorez/Desktop/recipes_appv2/android/app/.cxx/Debug/2q2m2k6h/x86_64/CMakeFiles/rebuild_cache.dir

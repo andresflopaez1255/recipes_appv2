@@ -1,0 +1,2 @@
+/Users/andresflorez/Desktop/recipes_appv2/android/app/.cxx/Debug/2q2m2k6h/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/andresflorez/Desktop/recipes_appv2/android/app/.cxx/Debug/2q2m2k6h/armeabi-v7a/CMakeFiles/rebuild_cache.dir
