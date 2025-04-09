@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recipes_appv2/data/repositories/recipes_repository_impl.dart';
+import 'package:recipes_appv2/data/source_data/network_source.dart';
+import 'package:recipes_appv2/presentation/providers/recipes_provider.dart';
 
-class RecipesList extends StatelessWidget {
+class RecipesList extends ConsumerStatefulWidget {
   const RecipesList({super.key});
 
   @override
+  ConsumerState<RecipesList> createState() => _RecipesListState();
+}
+
+class _RecipesListState extends ConsumerState<RecipesList> {
+  @override
+  void initState() {
+    RecipesRepositoryImpl(networkSource: NetworkSource()).fetchRecipes(ref);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final meals = ref.watch(recipesProvider);
     return GridView.builder(
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(), 
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -15,46 +31,43 @@ class RecipesList extends StatelessWidget {
         mainAxisSpacing: 10.0,
         childAspectRatio: 0.75,
       ),
-      itemCount: 10,
+      itemCount: meals.length, // Replace with actual item count from provider
       itemBuilder: (context, index) {
         return ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           child: Stack(
             children: [
               Image.network(
-                "https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg",
-                width: 200,
-                height: 2250,
+                meals[index].strMealThumb, // Replace with actual image URL
+                width: double.infinity,
+                height: double.infinity,
                 fit: BoxFit.cover,
               ),
               Container(
-                width: 200,
-                height: 400,
-                color: Colors.black.withAlpha(128), // Superposición oscura
+                color: Colors.black.withAlpha(128), // Dark overlay
               ),
               Positioned(
                 bottom: 16,
-                left: 16,
+                left: 8,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "title",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    SizedBox(
+                      width: 200,
+                      child: Text(
+                        meals[index].strMeal, // Replace with actual title
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+
+                        maxLines: 2,
                       ),
                     ),
-                    Row(
-                      children: const [
-                        Icon(Icons.category, color: Colors.white),
-                        SizedBox(width: 4),
-                        Text(
-                          " category",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
+                    Text(
+                      meals[index].strCategory, // Replace with actual category
+                      style: TextStyle(color: Colors.white),
                     ),
                   ],
                 ),

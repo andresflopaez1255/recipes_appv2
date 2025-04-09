@@ -5,7 +5,7 @@ class NetworkSource {
 
   NetworkSource({String? baseUrl}) {
     _dio = Dio(BaseOptions(
-      baseUrl: baseUrl ?? '',
+      baseUrl: "https://www.themealdb.com/api/json/v1/1/",
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
       responseType: ResponseType.json,
