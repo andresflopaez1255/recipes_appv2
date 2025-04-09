@@ -8,14 +8,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
-      body: Column(
-        children: [
-          Carousel(),
-          RecipesList(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Carousel(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+              child: RecipesList(), // RecipesList ahora se ajusta dentro del scroll
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
