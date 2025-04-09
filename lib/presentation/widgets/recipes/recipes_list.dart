@@ -44,7 +44,7 @@ class _RecipesListState extends ConsumerState<RecipesList> {
                 fit: BoxFit.cover,
               ),
               Container(
-                color: Colors.black.withAlpha(128), // Dark overlay
+                color: Colors.black.withAlpha(150), // Dark overlay
               ),
               Positioned(
                 bottom: 16,
@@ -53,7 +53,7 @@ class _RecipesListState extends ConsumerState<RecipesList> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: 200,
+                      width: 150,
                       child: Text(
                         meals[index].strMeal, // Replace with actual title
                         style: TextStyle(
@@ -67,7 +67,8 @@ class _RecipesListState extends ConsumerState<RecipesList> {
                     ),
                     Text(
                       meals[index].strCategory, // Replace with actual category
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Color(0xFFFFAC70),fontSize: 14),
+                      
                     ),
                   ],
                 ),
