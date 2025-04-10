@@ -8,6 +8,9 @@ abstract class RecipesRepository {
   /// Fetches a single recipe by its ID.
   Future<Recipe> fetchRecipeById(String id);
 
-  /// Adds a new recipe.
+ // get random recipe
+ fetchRandomRecipe(WidgetRef ref, List<Recipe> data);
+
+  
   
 }
