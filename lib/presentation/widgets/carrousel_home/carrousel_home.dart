@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:recipes_appv2/data/repositories/recipes_repository_impl.dart';
-import 'package:recipes_appv2/data/source_data/network_source.dart';
-import 'package:recipes_appv2/domain/entities/recipes.dart';
 import 'package:recipes_appv2/presentation/providers/carrousel_providers/carrousel_provider.dart';
 import 'package:recipes_appv2/presentation/providers/recipes_providers/recipes_provider.dart';
 

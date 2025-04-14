@@ -2,14 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recipes_appv2/data/repositories/recipes_repository_impl.dart';
 import 'package:recipes_appv2/data/source_data/network_source.dart';
-import 'package:recipes_appv2/domain/entities/recipes.dart';
 import 'package:recipes_appv2/presentation/providers/recipes_providers/recipes_provider.dart';
 import 'package:recipes_appv2/presentation/widgets/carrousel_home/carrousel_home.dart';
-import 'package:recipes_appv2/presentation/widgets/navigation/bottom_navigation.dart';
-import 'package:recipes_appv2/presentation/widgets/recipes/recipe_item.dart';
 import 'package:recipes_appv2/presentation/widgets/recipes/recipes_list.dart';
 import 'package:recipes_appv2/presentation/widgets/skeletons/recipes/skeleton_home.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -42,7 +38,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(),
+     
     );
   }
 }
