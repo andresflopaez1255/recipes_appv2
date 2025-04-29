@@ -2,43 +2,69 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recipes_appv2/data/repositories/recipes_repository_impl.dart';
 import 'package:recipes_appv2/data/source_data/network_source.dart';
-import 'package:recipes_appv2/presentation/providers/recipes_providers/recipes_provider.dart';
 import 'package:recipes_appv2/presentation/widgets/carrousel_home/carrousel_home.dart';
 import 'package:recipes_appv2/presentation/widgets/recipes/recipes_list.dart';
-import 'package:recipes_appv2/presentation/widgets/skeletons/recipes/skeleton_home.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-ConsumerState<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  String _currentLetter = 'a';
+
   @override
   void initState() {
-    RecipesRepositoryImpl(networkSource: NetworkSource()).fetchRecipes(ref);
     super.initState();
+    _fetchRecipes();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _fetchRecipes() async {
+   await  RecipesRepositoryImpl(networkSource: NetworkSource()).fetchRecipesByLetter(_currentLetter, ref);
+
+   
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      if (_currentLetter.codeUnitAt(0) < 'z'.codeUnitAt(0)) {
+        setState(() {
+          _currentLetter =
+              String.fromCharCode(_currentLetter.codeUnitAt(0) + 1);
+        });
+        _fetchRecipes();
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final randomRecipes = ref.watch(recipesProvider);
-    return randomRecipes.isEmpty ? SkeletonHome()
-    : Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Carousel(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-              child: const RecipesList(),
+    return  Scaffold(
+            body: SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Carousel(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 12),
+                    child: const RecipesList(),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
-     
-    );
+          );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipes_appv2/presentation/screens/dashboard_page.dart';
 import 'package:recipes_appv2/presentation/screens/home_page.dart';
+import 'package:recipes_appv2/presentation/screens/search_page.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 final _router = GoRouter(
@@ -27,6 +28,8 @@ final _router = GoRouter(
             body: Center(child: Text('Profile Page')),
           ),
         ),
+        GoRoute(                
+            path: '/search', builder: (context, state) => const SearchPage()),
       ],
     ),
   ],

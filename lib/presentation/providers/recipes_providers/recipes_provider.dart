@@ -4,17 +4,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'recipes_provider.g.dart';
 
-@riverpod
-class Recipes extends _$Recipes {
-  @override
-  List<Recipe> build() {
-    return [];
-  }
-
-  setRecipes(List<Recipe> data) {
-    state = data;
-  }
-}
 
 @riverpod
 class RandomRecipes extends _$RandomRecipes {
@@ -29,4 +18,19 @@ class RandomRecipes extends _$RandomRecipes {
     }
     state = RandomRecipesUtils(data).getRandomRecipes(4);
   }
+}
+
+
+
+
+@riverpod
+class Recipes extends _$Recipes {
+  @override
+  List<Recipe> build() {
+    return [];
+  }
+   void setRecipes(List<Recipe> recipes) {
+    state = [...state, ...recipes];
+  }
+
 }

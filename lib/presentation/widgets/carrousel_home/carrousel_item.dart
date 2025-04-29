@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CarouselItem extends StatelessWidget {
   final String image;
   final String title;
-  final String likes;
   final String category;
 
   const CarouselItem({
     super.key,
     required this.image,
     required this.title,
-    required this.likes,
     required this.category,
   });
 
@@ -34,12 +33,37 @@ class CarouselItem extends StatelessWidget {
           top: 60,
           left: 16,
           child: Container(
+            width: 86,
+            height: 32,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.red,
+            ),
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            color: Colors.red,
+            alignment: Alignment.center,
             child: Text(
               'Popular',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold),
             ),
+          ),
+        ),
+        Positioned(
+          top: 50,
+          right: 10,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: IconButton(
+                onPressed: () {
+                  context.go( '/search');
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                  size: 32,
+                )),
           ),
         ),
         Positioned(

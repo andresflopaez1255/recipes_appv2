@@ -13,25 +13,21 @@ class RecipesRepositoryImpl implements RecipesRepository {
 
   @override
   Future<Recipe> fetchRecipeById(String id) {
-    // TODO: implement fetchRecipeById
     throw UnimplementedError();
   }
 
   @override
-  fetchRecipes(WidgetRef ref) async {
-    final responseJson = await networkSource.get("search.php?f=b");
+  fetchRecipesByLetter(String letter, WidgetRef ref) async {
+    final responseJson = await networkSource.get("search.php?f=$letter");
     final recipesJson = responseJson.data as Map<String, dynamic>;
+
     final meals = (recipesJson['meals'] as List)
         .map((mealJson) =>
             RecipeModel.fromJson(mealJson as Map<String, dynamic>))
         .toList();
 
     ref.read(recipesProvider.notifier).setRecipes(meals);
-    fetchRandomRecipe(ref, meals);
   }
 
-  @override
-  fetchRandomRecipe(WidgetRef ref, List<Recipe> data) async {
-    ref.read(randomRecipesProvider.notifier).getRandomRecipes(data);
-  }
+ 
 }
