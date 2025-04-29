@@ -25,7 +25,7 @@ class CarouselItem extends StatelessWidget {
               image: NetworkImage(image),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  Colors.black.withAlpha(150), BlendMode.darken),
+                  Colors.black.withAlpha(120), BlendMode.darken),
             ),
           ),
         ),
