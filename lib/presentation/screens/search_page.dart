@@ -1,81 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipes_appv2/data/repositories/recipes_repository_impl.dart';
+import 'package:recipes_appv2/data/source_data/network_source.dart';
+import 'package:recipes_appv2/presentation/providers/recipes_providers/recipes_provider.dart';
+import 'package:recipes_appv2/presentation/widgets/categories/search_bar.dart';
+import 'package:recipes_appv2/presentation/widgets/commons/appBarCustom.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends ConsumerWidget {
   const SearchPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final resultsRecipes = ref.watch(searchRecipesProvider);
+    debugPrint("Search Results: $resultsRecipes");
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Color(0xFF4E4E4E),
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          title: const Text(
-            'Categorias',
-            style: TextStyle(
-              color: Color(0xFF4E4E4E),
-              fontSize: 25,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          backgroundColor: Colors.white,
-          elevation: 0,
-          centerTitle: false,
-          iconTheme: const IconThemeData(color: Colors.black),
-        ),
+        appBar: Appbarcustom(
+            title: 'Categories',
+            isBackButtonVisible: true,
+            isTitleVisible: true),
         body: Column(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               // ignore: void_checks
-              child: SearchBar( onChanged: (){},),
+              child: SearchBarCustom(
+                onSearch: (value) {
+                  RecipesRepositoryImpl(networkSource: NetworkSource())
+                      .searchRecipes(value, ref);
+                },
+              ),
             ),
-            // Add your search results here
+            Expanded(
+              child: ListView.builder(
+                 itemCount: resultsRecipes.length,
+                itemBuilder: (ctx, index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        dense: false,
+                        title: Text(resultsRecipes[index].strMeal,
+                            style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF676767))),
+                        onTap: () {
+                          context.push('/recipe', extra: resultsRecipes[index]);
+                        },
+                      ),
+                      const Divider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  );
+                },
+               
+              ),
+            )
           ],
         ));
-  }
-}
-
-class SearchBar extends StatelessWidget {
-  final String hint;
-  final Function() onChanged;
-  const SearchBar({
-    super.key,
-    this.hint = 'Search...',
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: hint,
-        hoverColor: Colors.black,
-        hintStyle: const TextStyle(
-          color: Color(0xFF4E4E4E),
-          fontSize: 16,
-        ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100),
-          borderSide: const BorderSide(color: Color(0xFF4E4E4E)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100),
-          borderSide: const BorderSide(color: Color(0xFF4E4E4E)),
-        ),
-        suffixIcon: IconButton(
-          icon: const Icon(Icons.search, color: Color(0xFF4E4E4E)),
-          onPressed: onChanged,
-        ),
-      ),
-    );
   }
 }

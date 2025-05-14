@@ -21,6 +21,21 @@ class RandomRecipes extends _$RandomRecipes {
 }
 
 
+@riverpod
+class SearchRecipes extends _$SearchRecipes {
+  @override
+  List<Recipe>  build() {
+    return  [];
+  }
+
+  void setSearchRecipes(List<Recipe> recipes) {
+    state = recipes;
+  }
+  void clearSearchRecipes() {
+    state = [];
+  }
+}
+
 
 
 @riverpod

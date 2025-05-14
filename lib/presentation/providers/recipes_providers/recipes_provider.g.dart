@@ -22,6 +22,22 @@ final randomRecipesProvider =
 );
 
 typedef _$RandomRecipes = AutoDisposeNotifier<List<Recipe>>;
+String _$searchRecipesHash() => r'9548f711a9fde2de7f7a0ab8f322b21d961a6028';
+
+/// See also [SearchRecipes].
+@ProviderFor(SearchRecipes)
+final searchRecipesProvider =
+    AutoDisposeNotifierProvider<SearchRecipes, List<Recipe>>.internal(
+  SearchRecipes.new,
+  name: r'searchRecipesProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$searchRecipesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$SearchRecipes = AutoDisposeNotifier<List<Recipe>>;
 String _$recipesHash() => r'de338dff141056eb865dfd56e631059b7842709d';
 
 /// See also [Recipes].

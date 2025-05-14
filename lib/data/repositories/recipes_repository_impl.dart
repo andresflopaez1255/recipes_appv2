@@ -29,5 +29,16 @@ class RecipesRepositoryImpl implements RecipesRepository {
     ref.read(recipesProvider.notifier).setRecipes(meals);
   }
 
- 
+  @override
+  searchRecipes(String query, WidgetRef ref) async {
+    final responseJson = await networkSource.get("search.php?s=$query");
+    final recipesJson = responseJson.data as Map<String, dynamic>;
+
+    final meals = (recipesJson['meals']as List)
+        .map((mealJson) =>
+            RecipeModel.fromJson(mealJson as Map<String, dynamic>))
+        .toList();
+
+    ref.read(searchRecipesProvider.notifier).setSearchRecipes(meals);
+  }
 }

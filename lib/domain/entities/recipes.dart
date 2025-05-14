@@ -22,7 +22,7 @@ class Recipe {
   final String? strImageSource;
   final String? strCreativeCommonsConfirmed;
   final DateTime? dateModified;
-
+   bool isFavorite = false;
   Recipe({
     required this.idMeal,
     required this.strMeal,
@@ -33,12 +33,14 @@ class Recipe {
     required this.strMealThumb,
     this.strTags,
     this.strYoutube,
+    this.isFavorite =false,
     required this.ingredients,
     required this.measures,
     this.strSource,
     this.strImageSource,
     this.strCreativeCommonsConfirmed,
     this.dateModified,
+    
   });
 
   

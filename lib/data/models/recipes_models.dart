@@ -17,11 +17,13 @@ class RecipeModel extends Recipe {
     super.strImageSource,
     super.strCreativeCommonsConfirmed,
     super.dateModified,
+    super.isFavorite,
   });
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) {
-List<String> parseList(String prefix) {
-      return List.generate(20, (index) => json['$prefix${index + 1}'] as String?)
+    List<String> parseList(String prefix) {
+      return List.generate(
+              20, (index) => json['$prefix${index + 1}'] as String?)
           .where((item) => item != null && item.isNotEmpty)
           .cast<String>()
           .toList();
@@ -39,9 +41,10 @@ List<String> parseList(String prefix) {
       strYoutube: json['strYoutube'] as String?,
       ingredients: parseList('strIngredient'),
       measures: parseList('strMeasure'),
-strSource: json['strSource'] as String?,
+      strSource: json['strSource'] as String?,
       strImageSource: json['strImageSource'] as String?,
-      strCreativeCommonsConfirmed: json['strCreativeCommonsConfirmed'] as String?,
+      strCreativeCommonsConfirmed:
+          json['strCreativeCommonsConfirmed'] as String?,
       dateModified: json['dateModified'] != null
           ? DateTime.parse(json['dateModified'] as String)
           : null,
@@ -49,7 +52,7 @@ strSource: json['strSource'] as String?,
   }
 
   Map<String, dynamic> toJson() {
-Map<String, String?> serializeList(List<String> list, String prefix) {
+    Map<String, String?> serializeList(List<String> list, String prefix) {
       final map = <String, String?>{};
       for (int i = 0; i < 20; i++) {
         map['$prefix${i + 1}'] = i < list.length ? list[i] : null;

@@ -57,7 +57,7 @@ class CarouselItem extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             child: IconButton(
                 onPressed: () {
-                  context.go( '/search');
+                  context.push( '/search');
                 },
                 icon: Icon(
                   Icons.search,

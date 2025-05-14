@@ -6,7 +6,7 @@ abstract class RecipesRepository {
   /// Fetches a single recipe by its ID.
   Future<Recipe> fetchRecipeById(String id);
 
-
+  searchRecipes(String query, WidgetRef ref);
 
 
  fetchRecipesByLetter( String letter, WidgetRef ref);

@@ -14,7 +14,7 @@ class RecipeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go('/recipe',extra: meals[index]); 
+        context.push('/recipe',extra: meals[index]); 
       },
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
