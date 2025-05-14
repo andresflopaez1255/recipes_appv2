@@ -1,20 +1,28 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recipes_appv2/data/source_data/network_source.dart';
+import 'package:recipes_appv2/presentation/providers/networksource_provider.dart';
 import 'package:recipes_appv2/presentation/providers/recipes_providers/recipes_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../domain/entities/recipes.dart';
-import '../../domain/repositories/recipes_repository.dart';
-import '../models/recipes_models.dart';
+import '../../../domain/entities/recipes.dart';
+import '../../../domain/repositories/recipes_repository.dart';
+import '../../models/recipes_models.dart';
+
+part 'recipes_repository_impl.g.dart';
+
+
+
+@riverpod
+RecipesRepositoryImpl recipesRepository(Ref ref) {
+  final networkSource = ref.read(networkSourceProvider);
+  return RecipesRepositoryImpl(networkSource: networkSource);
+}
 
 class RecipesRepositoryImpl implements RecipesRepository {
   final NetworkSource networkSource;
 
   RecipesRepositoryImpl({required this.networkSource});
 
-  @override
-  Future<Recipe> fetchRecipeById(String id) {
-    throw UnimplementedError();
-  }
 
   @override
   fetchRecipesByLetter(String letter, WidgetRef ref) async {

@@ -24,10 +24,13 @@ class BottomNavigation extends ConsumerWidget {
           case 0:
             context.go('/home');
             break;
-          case 1:
+            case 1:
+            context.go('/categories');
+            break;  
+          case 2:
             context.go('/favorites');
             break;
-          case 2:
+          case 3:
             context.go('/profile');
             break;
         }
@@ -36,6 +39,10 @@ class BottomNavigation extends ConsumerWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',
+        ),
+          BottomNavigationBarItem(
+          icon: Icon(Icons.category),
+          label: 'Categories',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite),

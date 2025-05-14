@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipes_appv2/domain/entities/recipes.dart';
+import 'package:recipes_appv2/presentation/screens/categories_page.dart';
 import 'package:recipes_appv2/presentation/screens/dashboard_page.dart';
 import 'package:recipes_appv2/presentation/screens/home_page.dart';
 import 'package:recipes_appv2/presentation/screens/recipes_info_page.dart';
@@ -32,11 +33,13 @@ final _router = GoRouter(
         ),
         GoRoute(
             path: '/search', builder: (context, state) => const SearchPage()),
+               GoRoute(
+            path: '/categories', builder: (context, state) => const CategoriesPage()),
         GoRoute(
             path: '/recipe',
             builder: (context, state) {
               final mealInfo = state.extra as Recipe;
-              return RecipesInfoPage(meal:mealInfo);
+              return RecipesInfoPage(meal: mealInfo);
             }),
       ],
     ),

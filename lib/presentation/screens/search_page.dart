@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recipes_appv2/data/repositories/recipes_repository_impl.dart';
-import 'package:recipes_appv2/data/source_data/network_source.dart';
+import 'package:recipes_appv2/data/repositories/recipes_repository/recipes_repository_impl.dart';
 import 'package:recipes_appv2/presentation/providers/recipes_providers/recipes_provider.dart';
 import 'package:recipes_appv2/presentation/widgets/categories/search_bar.dart';
 import 'package:recipes_appv2/presentation/widgets/commons/appBarCustom.dart';
@@ -13,6 +12,7 @@ class SearchPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final resultsRecipes = ref.watch(searchRecipesProvider);
+    final recipesRepositoryImpl = ref.watch(recipesRepositoryProvider);
     debugPrint("Search Results: $resultsRecipes");
     return Scaffold(
         backgroundColor: Colors.white,
@@ -27,14 +27,13 @@ class SearchPage extends ConsumerWidget {
               // ignore: void_checks
               child: SearchBarCustom(
                 onSearch: (value) {
-                  RecipesRepositoryImpl(networkSource: NetworkSource())
-                      .searchRecipes(value, ref);
+                recipesRepositoryImpl.searchRecipes(value, ref);
                 },
               ),
             ),
             Expanded(
               child: ListView.builder(
-                 itemCount: resultsRecipes.length,
+                itemCount: resultsRecipes.length,
                 itemBuilder: (ctx, index) {
                   return Column(
                     children: [
@@ -56,7 +55,6 @@ class SearchPage extends ConsumerWidget {
                     ],
                   );
                 },
-               
               ),
             )
           ],
