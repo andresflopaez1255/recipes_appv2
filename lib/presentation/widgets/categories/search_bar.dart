@@ -29,7 +29,7 @@ class _SearchBarState extends State<SearchBarCustom> {
   void _onChanged(String value) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
-      widget.onSearch(value); // Trigger the search callback
+      widget.onSearch(value); 
     });
   }
 

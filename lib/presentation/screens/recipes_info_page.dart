@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_appv2/data/source_data/local_favorities_source.dart';
 import 'package:recipes_appv2/domain/entities/recipes.dart';
 import 'package:recipes_appv2/presentation/widgets/recipes_info/Ingredients.dart';
 import 'package:recipes_appv2/presentation/widgets/recipes_info/image_recipe.dart';
@@ -15,7 +16,6 @@ class RecipesInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Initialize the Youtube player controller with a video ID
     final videoID = meal.strYoutube?.split('=').last;
-
     final controller = YoutubePlayerController.fromVideoId(
       videoId: videoID ?? '',
       autoPlay: false,
@@ -26,36 +26,42 @@ class RecipesInfoPage extends StatelessWidget {
       child: YoutubePlayerScaffold(
         controller: controller,
         builder: (BuildContext context, Widget player) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                ImageRecipe(meal: meal),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TitleSection(title: 'Ingredients'),
-                      IngredientsAndMeausures(
-                        meal: meal,
+          return FutureBuilder<bool>(
+            future: LocalFavoritesSource().isFavorite(meal.idMeal),
+            builder: (context, snapshot) {
+              final isFavorite = snapshot.data ?? false;
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ImageRecipe(meal: meal, isFavorite: isFavorite),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TitleSection(title: 'Ingredients'),
+                          IngredientsAndMeausures(
+                            meal: meal,
+                          ),
+                          TitleSection(
+                            title: 'Instructions',
+                          ),
+                          Text(
+                            meal.strInstructions, // Instructions
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          TitleSection(title: 'Video tutorial'),
+                          YoutubePlayer(
+                            controller: controller,
+                            aspectRatio: 16 / 9,
+                          ),
+                        ],
                       ),
-                      TitleSection(
-                        title: 'Instructions',
-                      ),
-                      Text(
-                        meal.strInstructions, // Instructions
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                      TitleSection(title: 'Video tutorial'),
-                      YoutubePlayer(
-                        controller: controller,
-                        aspectRatio: 16 / 9,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           );
         },
       ),

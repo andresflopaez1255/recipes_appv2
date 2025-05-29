@@ -53,5 +53,21 @@ final recipesProvider =
 );
 
 typedef _$Recipes = AutoDisposeNotifier<List<Recipe>>;
+String _$recipesByCategoryHash() => r'978922ba8197d3a0da99c0c383832345a922cc62';
+
+/// See also [RecipesByCategory].
+@ProviderFor(RecipesByCategory)
+final recipesByCategoryProvider = AutoDisposeNotifierProvider<RecipesByCategory,
+    List<RecipeCategory>>.internal(
+  RecipesByCategory.new,
+  name: r'recipesByCategoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$recipesByCategoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$RecipesByCategory = AutoDisposeNotifier<List<RecipeCategory>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

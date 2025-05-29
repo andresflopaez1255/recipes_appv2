@@ -45,3 +45,14 @@ class Recipe {
 
   
 }
+class RecipeCategory {
+  String strMeal;
+  String strMealThumb;
+  String idMeal;
+
+  RecipeCategory({
+    required this.strMeal,
+    required this.strMealThumb,
+    required this.idMeal,
+  });
+}

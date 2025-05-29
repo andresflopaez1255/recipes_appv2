@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recipes_appv2/domain/entities/recipes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {

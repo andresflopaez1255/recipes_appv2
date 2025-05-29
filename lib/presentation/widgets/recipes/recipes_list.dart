@@ -32,7 +32,7 @@ class RecipesList extends ConsumerWidget {
           return TweenAnimationBuilder<double>(
             tween: Tween(begin: 0, end: 1),
             duration: Duration(milliseconds: 300 + index * 100), // escalonada
-            curve: Curves.easeOut,
+            curve: Curves.fastOutSlowIn,
             builder: (context, value, child) {
               return Opacity(
                 opacity: value,

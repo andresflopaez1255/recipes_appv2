@@ -5,7 +5,7 @@ var meals = [
       idMeal: '1',
       strMeal: "Spaghetti",
       strCategory: "Pasta",
-      strMealThumb: "https://example.com/spaghetti.jpg",
+      strMealThumb: "",
       strArea: "Italian",
       strInstructions: "Boil pasta and add sauce.",
       ingredients: ["Pasta", "Tomato Sauce"],
@@ -14,7 +14,7 @@ var meals = [
     Recipe(
       strMeal: "Pizza",
       strCategory: "Fast Food",
-      strMealThumb: "https://example.com/pizza.jpg",
+      strMealThumb: "",
       idMeal: '1',
       strArea: "Italian",
       strInstructions: "Bake dough with toppings.",
@@ -24,7 +24,7 @@ var meals = [
     Recipe(
       strMeal: "Pizza",
       strCategory: "Fast Food",
-      strMealThumb: "https://example.com/pizza.jpg",
+      strMealThumb: "",
       idMeal: '1',
       strArea: "Italian",
       strInstructions: "Bake dough with toppings.",
@@ -34,7 +34,7 @@ var meals = [
     Recipe(
       strMeal: "Pizza",
       strCategory: "Fast Food",
-      strMealThumb: "https://example.com/pizza.jpg",
+      strMealThumb: "",
       idMeal: '1',
       strArea: "Italian",
       strInstructions: "Bake dough with toppings.",

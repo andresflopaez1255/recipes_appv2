@@ -49,3 +49,15 @@ class Recipes extends _$Recipes {
   }
 
 }
+
+@riverpod
+class RecipesByCategory extends _$RecipesByCategory {
+  @override
+  List<RecipeCategory> build() {
+    return [];
+  }
+
+  void setRecipesByCategory(List<RecipeCategory> recipes) {
+    state = recipes;
+  }
+}

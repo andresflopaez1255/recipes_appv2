@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipes_appv2/presentation/providers/navigation_providers/navigation_provider.dart';
 
-class Appbarcustom extends StatelessWidget implements PreferredSizeWidget {
+class Appbarcustom extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback? onBackPressed;
   final bool isBackButtonVisible;
@@ -14,28 +17,33 @@ class Appbarcustom extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
     return AppBar(
       leading: isBackButtonVisible
           ? IconButton(
               icon: const Icon(Icons.arrow_back_ios),
-              onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
+              onPressed: onBackPressed ??
+                  () {
+                    ref.read(navigationProvider.notifier).setIndex(0);
+                    context.go('/home');
+                  },
             )
           : null,
       title: isTitleVisible
           ? Text(
               title,
-              style: const TextStyle(
-                color: Color(0xFF4E4E4E),
+              style: TextStyle(
+                color: theme.textTheme.headlineMedium?.color ?? Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
             )
           : null,
-      backgroundColor: Colors.white,
+      backgroundColor: theme.scaffoldBackgroundColor,
       elevation: 0,
       centerTitle: false,
-      iconTheme: const IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: theme.iconTheme.color ?? Colors.black),
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:recipes_appv2/domain/entities/categories.dart';
+import 'package:recipes_appv2/domain/entities/recipes.dart';
 
 class CategoriesModel extends Category {
   CategoriesModel({
@@ -24,6 +25,31 @@ class CategoriesModel extends Category {
       'strCategory': strCategory,
       'strCategoryDescription': strCategoryDescription,
       'strCategoryThumb': strCategoryThumb,
+    };
+  }
+}
+
+class RecipeCategoryModel extends RecipeCategory {
+  RecipeCategoryModel({
+    required super.strMeal,
+    required super.strMealThumb,
+    required super.idMeal,
+  });
+
+  factory RecipeCategoryModel.fromJson(Map<String, dynamic> json) {
+    return RecipeCategoryModel(
+      strMeal: json['strMeal'] as String,
+      strMealThumb: json['strMealThumb'] as String,
+      idMeal: json['idMeal'] as String,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    // Convert the RecipeCategoryModel instance to a JSON map
+    return {
+      'strMeal': strMeal,
+      'strMealThumb': strMealThumb,
+      'idMeal': idMeal,
     };
   }
 }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_appv2/data/source_data/local_favorities_source.dart';
 import 'package:recipes_appv2/domain/entities/recipes.dart';
 
 class ImageRecipe extends StatelessWidget {
   final Recipe meal;
-  const ImageRecipe({super.key, required this.meal});
-
+  final bool isFavorite;
+  const ImageRecipe({super.key, required this.meal, required this.isFavorite});
   @override
   Widget build(BuildContext context) {
+      debugPrint('ImageRecipe: ${isFavorite}'); // Debugging line to check meal name
+      
     return Stack(
       children: [
         Container(
@@ -32,6 +35,24 @@ class ImageRecipe extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.of(context).pop();
+            },
+          ),
+        ),
+        Positioned(
+          top: 16,
+          right: 10,
+          child: IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: isFavorite ? Colors.red : Colors.white,
+              size: 30,
+            ),
+            onPressed: () {
+              if (isFavorite) {
+                LocalFavoritesSource().removeFavorite(meal.idMeal); // Cambia a idMeal
+              } else {
+                LocalFavoritesSource().addFavorite(meal); // Cambia a idMeal
+              }
             },
           ),
         ),
