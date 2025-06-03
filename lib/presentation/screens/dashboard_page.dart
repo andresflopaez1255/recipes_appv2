@@ -13,6 +13,7 @@ class DashboardPage extends ConsumerWidget {
     final screensWithBottomNav = [
       '/home',
       '/categories',
+      '/favorites',
       '/profile',
     ];
 

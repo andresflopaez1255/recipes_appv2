@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:recipes_appv2/data/source_data/local_favorities_source.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:recipes_appv2/data/repositories/favorites_repository.dart';
 import 'package:recipes_appv2/domain/entities/recipes.dart';
+import 'package:recipes_appv2/presentation/providers/favorites_provider.dart';
 
-class ImageRecipe extends StatelessWidget {
+class ImageRecipe extends ConsumerWidget {
   final Recipe meal;
-  final bool isFavorite;
-  const ImageRecipe({super.key, required this.meal, required this.isFavorite});
+  const ImageRecipe({
+    super.key,
+    required this.meal,
+  });
+
   @override
-  Widget build(BuildContext context) {
-      debugPrint('ImageRecipe: ${isFavorite}'); // Debugging line to check meal name
-      
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favorites = ref.watch(favoritesProvider);
+    final isFavorite = favorites.any((fav) => fav.idMeal == meal.idMeal);
+    final favoriteRepository = ref.watch(favoritiesRepositoryProvider);
+
     return Stack(
       children: [
         Container(
@@ -47,11 +54,11 @@ class ImageRecipe extends StatelessWidget {
               color: isFavorite ? Colors.red : Colors.white,
               size: 30,
             ),
-            onPressed: () {
+            onPressed: () async {
               if (isFavorite) {
-                LocalFavoritesSource().removeFavorite(meal.idMeal); // Cambia a idMeal
+                await favoriteRepository.removeFavorite(meal.idMeal, ref);
               } else {
-                LocalFavoritesSource().addFavorite(meal); // Cambia a idMeal
+                await favoriteRepository.addFavorite(meal, ref);
               }
             },
           ),
@@ -63,21 +70,21 @@ class ImageRecipe extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                meal.strMeal, // Use the meal's name
-                style: TextStyle(
+                meal.strMeal,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 children: [
-                  Icon(Icons.category, color: Colors.white),
-                  SizedBox(width: 4),
+                  const Icon(Icons.category, color: Colors.white),
+                  const SizedBox(width: 4),
                   Text(
-                    meal.strCategory, // Use the meal's category
-                    style: TextStyle(color: Colors.white),
+                    meal.strCategory,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ],
               ),

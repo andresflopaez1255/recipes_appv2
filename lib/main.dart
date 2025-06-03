@@ -7,6 +7,7 @@ import 'package:recipes_appv2/presentation/screens/categories_page.dart';
 import 'package:recipes_appv2/presentation/screens/dashboard_page.dart';
 import 'package:recipes_appv2/presentation/screens/favorities_page.dart';
 import 'package:recipes_appv2/presentation/screens/home_page.dart';
+import 'package:recipes_appv2/presentation/screens/profile_page.dart';
 import 'package:recipes_appv2/presentation/screens/recipes_info_page.dart';
 import 'package:recipes_appv2/presentation/screens/search_page.dart';
 import 'package:recipes_appv2/theme/app_theme.dart';
@@ -30,7 +31,7 @@ final _router = GoRouter(
         GoRoute(
           path: '/profile',
           builder: (context, state) => const Scaffold(
-            body: Center(child: Text('Profile Page')),
+            body: ProfilePage(),
           ),
         ),
         GoRoute(
