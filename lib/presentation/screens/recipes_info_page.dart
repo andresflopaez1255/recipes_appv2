@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:recipes_appv2/data/repositories/favorites_repository.dart';
 import 'package:recipes_appv2/domain/entities/recipes.dart';
-import 'package:recipes_appv2/presentation/providers/favorites_provider.dart';
 import 'package:recipes_appv2/presentation/widgets/recipes_info/Ingredients.dart';
 import 'package:recipes_appv2/presentation/widgets/recipes_info/image_recipe.dart';
 import 'package:recipes_appv2/presentation/widgets/recipes_info/title_section.dart';

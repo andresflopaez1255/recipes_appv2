@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:recipes_appv2/data/repositories/categories_repository_impl/categories_repository_impl.dart';
 import 'package:recipes_appv2/presentation/providers/categories_providers/categories_provider.dart';
-import 'package:recipes_appv2/presentation/providers/navigation_providers/navigation_provider.dart';
 import 'package:recipes_appv2/presentation/widgets/categories/search_bar.dart';
 import 'package:recipes_appv2/presentation/widgets/commons/appBarCustom.dart';
 import 'package:recipes_appv2/presentation/widgets/skeletons/categories/skeleton_categories.dart';

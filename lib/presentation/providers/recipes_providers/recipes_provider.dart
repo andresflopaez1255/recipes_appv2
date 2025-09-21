@@ -12,7 +12,7 @@ class RandomRecipes extends _$RandomRecipes {
     return [];
   }
 
-  getRandomRecipes(List<Recipe> data) {
+  void getRandomRecipes(List<Recipe> data) {
     if (data.isEmpty) {
       state = [];
     }
