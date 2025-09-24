@@ -1,6 +1,6 @@
 # recipes_appv2
   
-![Flutter Logo](https://flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png)
+![Demo](https://firebasestorage.googleapis.com/v0/b/portafolio-dd96b.appspot.com/o/demo_app.gif?alt=media&token=f9ab0fae-26cf-4e20-bd46-63ca8efeb52d)
 
 ## Descripción
 
