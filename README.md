@@ -23,12 +23,14 @@
 <h2 align="center">🎬 Vista previa de la aplicación</h2>
 
 <p align="center">
-  <img src="./demo_app.gif" alt="Vista previa de la app" width="200" />
+  <img src="demo_thumbnail.png" alt="Cargando vista previa..." width="400" />
+  <br>
+  <em>🔄 Cargando demo, espera un momento...</em>
 </p>
 
----
-
-
+<p align="center">
+  <img src="./demo_app.gif" alt="Vista previa de la app" width="400" style="display:none;" />
+</p>
 
 
 
