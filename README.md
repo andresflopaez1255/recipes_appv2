@@ -25,7 +25,7 @@
 
 
 <p align="center">
-  <img src="./demo_app.gif" alt="Vista previa de la app" width="150" style="display:none;" />
+  <img src="./demo_app.gif" alt="Vista previa de la app" width="250" style="display:none;" />
 </p>
 
 
