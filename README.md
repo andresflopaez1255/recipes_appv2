@@ -22,7 +22,7 @@
   <img src="demo_app.gif" alt="Demo App" width="320" />
 </p>
 
-[![Demo de la app](https://i.imgur.com/XXXXX.jpg)](https://drive.google.com/file/d/1lmYo0W2ivtu8cP_95yuES5wolCO7YjMx/view?usp=sharing)
+🎞️ [Ver demo en Google Drive](https://drive.google.com/file/d/1IRZ-rr6i5wuH0CQ7wsk8jbc5n4YEukLQ/view?usp=sharing)
 
 
 
