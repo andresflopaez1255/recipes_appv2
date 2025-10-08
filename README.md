@@ -18,11 +18,9 @@
 
 ---
 
-<p align="center">
-  <img src="demo_app.gif" alt="Demo App" width="320" />
-</p>
 
-🎞️ [Ver demo en Google Drive](https://drive.google.com/file/d/1IRZ-rr6i5wuH0CQ7wsk8jbc5n4YEukLQ/view?usp=sharing)
+🎬 [Ver demo en GitHub](./demo_app_light.mp4)
+
 
 
 
