@@ -19,7 +19,7 @@
 ---
 
 <p align="center">
-  <img src="https://firebasestorage.googleapis.com/v0/b/portafolio-dd96b.appspot.com/o/demo_app.gif?alt=media&token=f9ab0fae-26cf-4e20-bd46-63ca8efeb52d" alt="Demo App" width="300" />
+  <img src="demo_app.gif" alt="Demo App" width="320" />
 </p>
 
 
