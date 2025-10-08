@@ -1,53 +1,48 @@
-# recipes_appv2
-  
-![Demo](https://firebasestorage.googleapis.com/v0/b/portafolio-dd96b.appspot.com/o/demo_app.gif?alt=media&token=f9ab0fae-26cf-4e20-bd46-63ca8efeb52d)
+<h1 align="center">🧩 Manager Accounts</h1>
 
-## Descripción
+<p align="center">
+  <img src="https://firebasestorage.googleapis.com/v0/b/portafolio-dd96b.appspot.com/o/demo_app.gif?alt=media&token=f9ab0fae-26cf-4e20-bd46-63ca8efeb52d" alt="Demo App" width="300">
+</p>
 
-**recipes_appv2** es una aplicación móvil desarrollada con Flutter que permite explorar, buscar y gestionar recetas de cocina de manera sencilla y atractiva.
+<p align="center">
+  <b>Aplicación Flutter para la gestión de cuentas de usuario.</b><br>
+  Arquitectura limpia, modular y lista para escalar 🚀
+</p>
 
-## Características principales
+<p align="center">
+  <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"/></a>
+  <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white"/></a>
+  <img src="https://img.shields.io/badge/Platform-Android%20|%20iOS%20|%20Web-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/license/andresflopaez1255/manager_accounts?style=for-the-badge"/>
+</p>
 
-- **Exploración de recetas:** Navega por una amplia variedad de recetas organizadas por categorías.
-- **Búsqueda avanzada:** Encuentra recetas por nombre, ingredientes o tipo de comida.
-- **Favoritos:** Guarda tus recetas preferidas para acceder rápidamente.
-- **Interfaz intuitiva:** Diseño moderno y responsivo adaptado a dispositivos móviles.
+---
 
-## Estructura del proyecto
+## ✨ Características principales
 
-- **lib/**  
-  Código fuente principal de la aplicación.
-  - **models/**: Definición de modelos de datos (recetas, ingredientes, etc.).
-  - **screens/**: Pantallas principales (inicio, detalle de receta, favoritos).
-  - **widgets/**: Componentes reutilizables de la interfaz.
-  - **services/**: Lógica de negocio y acceso a datos (API, almacenamiento local).
+- ✅ **Gestión completa de cuentas:** crear, editar, eliminar y listar usuarios.  
+- 🔐 **Autenticación y roles:** login, registro y control de permisos.  
+- 🌐 **Integración con backend:** API REST o Firebase.  
+- 🧩 **Arquitectura modular:** separación clara entre UI, lógica y servicios.  
+- 📱 **Multiplataforma:** Android, iOS y Web.  
+- ⚙️ **Gestión de estado moderna:** Provider / Bloc / Riverpod.  
+- 💡 **Código limpio, documentado y mantenible.**
 
-- **assets/**  
-  Imágenes y recursos utilizados en la app.
+---
 
-## Tecnologías utilizadas
-
-- **Flutter:** Framework principal para desarrollo multiplataforma.
-- **Dart:** Lenguaje de programación.
-- **Provider:** Gestión de estado.
-- **HTTP:** Consumo de APIs externas.
-- **Sqflite:** Almacenamiento local de datos.
-
-## Instalación
+## 🧱 Estructura del proyecto
 
 ```bash
-git clone https://github.com/tuusuario/recipes_appv2.git
-cd recipes_appv2
-flutter pub get
-flutter run
-```
+manager_accounts/
+├── android/
+├── ios/
+├── lib/
+│   ├── models/        # Entidades (User, Account, etc.)
+│   ├── services/      # Conexión con backend / Firebase
+│   ├── providers/     # Lógica de negocio / estado
+│   ├── views/         # Pantallas de UI
+│   ├── widgets/       # Componentes reutilizables
+│   └── main.dart
+├── test/              # Pruebas unitarias e integradas
+└── pubspec.yaml
 
-## Contribuciones
-
-¡Las contribuciones son bienvenidas! Por favor, abre un issue o envía un pull request.
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT.
-
-A new Flutter project.
