@@ -18,11 +18,8 @@
 
 ---
 
-<p align="center">
-  <img src="demo_app.gif" alt="Demo App" width="320" />
-</p>
 
-<video src="./demo_app_light.mp4" controls width="600"></video>
+🎬 [Ver demo en GitHub](./demo_app_light.mp4)
 
 
 
