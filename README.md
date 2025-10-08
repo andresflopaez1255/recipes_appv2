@@ -18,10 +18,15 @@
 
 ---
 
+---
+
+<h2 align="center">🎬 Vista previa de la aplicación</h2>
+
 <p align="center">
-  <img src="./demo_app.gif" alt="Demo App" width="320" />
+  <img src="./demo_app.gif" alt="Vista previa de la app" width="400" />
 </p>
 
+---
 
 
 
