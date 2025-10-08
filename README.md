@@ -44,11 +44,9 @@ El objetivo es ofrecer una experiencia agradable, práctica e inspiradora para l
 
 ```bash
 lib/
-├── models/      # Definición de modelos de datos (recetas, ingredientes, etc.)
-├── screens/     # Pantallas principales (inicio, detalle, favoritos)
-├── widgets/     # Componentes reutilizables
-├── services/    # Lógica de negocio y acceso a datos (API, almacenamiento local)
-└── main.dart    # Punto de entrada de la aplicación
-
-assets/
-└── imágenes y recursos visuales usados en la app
+┣ 📂 data → Manejo de fuentes de datos y repositorios
+┣ 📂 domain → Entidades y casos de uso
+┣ 📂 presentation → Pantallas, controladores y vistas
+┣ 📂 theme → Estilos globales y temas visuales
+┣ 📂 utils → Funciones y helpers reutilizables
+┗ 📄 main.dart → Punto de entrada de la aplicación
