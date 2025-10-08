@@ -18,6 +18,9 @@
 
 ---
 
+![Demo](demo_app.gif)
+
+
 ## 🧾 Descripción
 
 **recipes_appv2** es una aplicación móvil desarrollada en **Flutter** que permite a los usuarios **explorar, buscar y gestionar recetas de cocina** de manera sencilla, moderna y rápida.  
